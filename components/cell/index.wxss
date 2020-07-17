@@ -1,9 +1,10 @@
 /* components/cell/index.wxss */
 
 .container{
-    height: 60rpx;
+
     border:2rpx solid #333333 ;
     padding:2rpx;
+    height: 60rpx;
     box-sizing: border-box;
 }
 
@@ -15,4 +16,19 @@
     align-items: center;
     background-color: #ffffff;
     font-size: 24rpx;
+}
+
+.forbidden{
+    border: 2rpx dashed #bbbbbb;
+    color: #bbbbbb;
+}
+.s-outer{
+    border: 2rpx solid #157658;
+    color: #ffffff;
+}
+.s-inner{
+    background-color: #157658;
+}
+.selected{
+
 }

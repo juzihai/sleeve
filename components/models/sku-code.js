@@ -10,7 +10,7 @@ class SkuCode {
         this._splistToSegments()
     }
     _splistToSegments(){
-
+        //"2$1-45#3-9#4-14"
         const spuAndSpec=this.code.split('$')
         this.spuId = spuAndSpec[0]
 
@@ -19,8 +19,15 @@ class SkuCode {
 
         for (let i =1;i<=length;i++){
           const segments = combination(specCodeArray,i)
-            console.log(segments)
+            const  newSegments=segments.map(segs=>{
+                return  segs.join('#')
+            })
+            this.totalSegments = this.totalSegments.concat(newSegments)
+            console.log(newSegments)
         }
+        // 尽量少写显式的for循环
+       // for for
+       // 类、函数
 
     }
 }
