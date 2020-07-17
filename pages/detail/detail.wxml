@@ -1,0 +1,15 @@
+<!--pages/detail/detail.wxml-->
+<scroll-view scroll-y>
+    <!-- <swiper class="top" autoplay indicator-dots>
+        <swiper-item wx:for="{{spu.spu_img_list}}">
+            <image class="top" mode="aspectFill" src="{{item.img}}"></image>
+        </swiper-item>
+    </swiper> -->
+
+
+</scroll-view>
+ <s-realm spu="{{spu}}"></s-realm>
+
+<!-- <l-popup show="true">
+   
+</l-popup> -->

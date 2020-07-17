@@ -1,0 +1,42 @@
+/* components/hot-list/index.wxss */
+@import "../../wxss/sleeve.wxss";
+
+.container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40rpx;
+    background-color: white;
+}
+
+.title{
+    width: 690rpx;
+    height: 90rpx;
+}
+
+.inner-container{
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.left{
+    width: 346rpx;
+    height: 522rpx;
+    display: flex;
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-size{
+    width: 400rpx;
+    height: 260rpx;
+    display: flex;
+
+}

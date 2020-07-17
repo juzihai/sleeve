@@ -1,0 +1,4 @@
+/* components/relam/index.wxss */
+.container{
+    padding: 30rpx;
+}

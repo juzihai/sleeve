@@ -1,0 +1,145 @@
+/* components/coupon/index.wxss */
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share-box {
+  width: 80rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0px 1px 8px 0px rgba(220, 220, 220, 0.5);
+  background-color: white;
+}
+
+.inner{
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-container{
+  box-sizing: border-box;
+  padding: 20rpx;
+  max-height: 1000rpx;
+  min-height: 700rpx;
+  margin-bottom: 100rpx;
+  width: 700rpx;
+}
+.btn{
+  margin: 20rpx;
+}
+
+.wrapper {
+  /*margin: 0 auto;*/
+  width: 100%;
+  margin: 20rpx 0rpx;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(-90deg, rgb(250, 173, 82), rgba(254, 50, 103, 1));
+  /*    !*实现颜色渐变 *!*/
+}
+.left{
+  position: relative;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+}
+
+/*后半部分样式*/
+.right {
+  position: relative;
+  padding: 50rpx 30rpx;
+  /* flex: 0 0 200rpx; */
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*中间竖直虚线样式*/
+.split-line {
+  position: relative;
+  flex: 0 0 0;
+  margin: 0 10rpx 0 6rpx;
+  border-left: 4rpx dashed #eee;
+}
+
+/*给虚线加两个伪类，基本样式如下*/
+.split-line:before, .split-line:after {
+  content: '';
+  position: absolute;
+  width: 32rpx;
+  height: 16rpx;
+  background: #fff;
+  left: -18rpx;
+  z-index: 1;
+}
+
+/*给前半部分加两个伪类，基本样式如下*/
+.left:before, .left:after {
+  content: '';
+  position: absolute;
+  width: 32rpx;
+  height: 16rpx;
+  background: #fff;
+  left: -16rpx;
+  z-index: 1;
+}
+
+/*给前半部分加两个伪类，基本样式如下*/
+.right:before, .right:after{
+  content: '';
+  position: absolute;
+  width: 32rpx;
+  height: 16rpx;
+  background:#fff;
+  right: -16rpx;
+  z-index: 1;
+}
+/*几个伪类化成的圆弧的样式以及位置（置于顶部）我把它放在一起了*/
+.left:before, .right:before, .split-line:before{
+  border-radius: 0 0 16rpx 16rpx;
+  top: 0;
+}
+
+/*几个伪类化成的圆弧的样式以及位置（置于底部）我把它放在一起了*/
+.left:after, .right:after, .split-line:after{
+  border-radius: 16rpx 16rpx 0 0;
+  bottom: 0;
+}
+
+.money {
+  font-size: 60rpx;
+  color: #eee;
+}
+.money text {
+  font-size: 40rpx;
+  padding-right: 20rpx;
+}
+.title {
+  color: #eee;
+  font-size: 30rpx;
+}
+.conditions {
+  color: #eee;
+  font-size: 30rpx;
+  padding:15rpx;
+}
+.useNow {
+  color: rgba(254,50,103,1);
+  font-size: 30rpx;
+  border-radius: 50rpx;
+  border-style: none;
+  width: 100rpx;
+}

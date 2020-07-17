@@ -1,0 +1,58 @@
+<!--pages/home.wxml-->
+<!-- <calendar
+  calendarConfig="{{calendarConfig}}"
+  bind:onTapDay="onTapDay"
+  bind:afterTapDay="afterTapDay"
+  bind:onSwipe="onSwipe"
+  bind:whenChangeWeek="whenChangeWeek"
+  bind:whenChangeMonth="whenChangeMonth"
+  bind:afterCalendarRender="afterCalendarRender"
+></calendar> -->
+
+<l-loadmore show
+            end-text="- 没有更多 -"
+            type="{{loadingType}}">
+
+<view class="container" slot="content">
+    <image class="top-theme" src="{{themeA.entrance_img}}" mode="widthFix" bindtap="oninit"></image>
+    <swiper class="swiper"
+    indicator-dots
+    indicator-active-color="#155876"
+    autoplay
+    circular
+    >
+        <swiper-item wx:for="{{bannerB.items}}">
+            <image class="swiper" src="{{item.img}}"></image>
+        </swiper-item>
+
+    </swiper>
+
+    <s-category-grid grid='{{grid}}'/>
+
+    <image class="activity" src="{{activityD.entrance_img}}"></image>
+
+    <s-spu-scroll
+            theme="{{themeE}}"
+            spu-list="{{themeESpu}}"
+            wx:if="{{themeE.online}}">
+    </s-spu-scroll>
+
+    <image class="quality" src="{{themeF.entrance_img}}"></image>
+
+    <s-hot-list banner="{{bannerG}}"/>
+
+    <image class="fashion" src="{{themeH.entrance_img}}"></image>
+
+    <view class="spu-bottom">
+        <image class="title-spu-bottom" src="/imgs/home/title@interest.png"></image>
+        <l-water-flow generic:l-water-flow-item="s-spu-preview"/>
+    </view>
+
+</view>
+<!-- <l-popup content-align="center" show="{{showCoupon}}">
+      <s-coupon couponData="{{activityCoupon.items}}" bind:onLeft="onLeft" bind:onRight="onRight"/>
+</l-popup> -->
+
+
+
+</l-loadmore>

@@ -1,0 +1,15 @@
+<!--components/hot-list/index.wxml-->
+<view class="container">
+    <image src="{{banner.img}}" class="title" mode="widthFix" bind:tap="onMoreTap"/>
+    <view class="inner-container">
+        <view hover-class="rect-hover" hover-stay-time="{{300}}">
+            <image class="left" src="{{left.img}}" bind:tap="onItemTap" />
+        </view>
+       <view class="right-container">
+           <image class="right-size" src="{{rightTop.img}}" bind:tap="onItemTap"/>
+           <image class="right-size" src="{{rightBottom.img}}" bind:tap="onItemTap"/>
+       </view>
+
+    </view>
+
+</view>

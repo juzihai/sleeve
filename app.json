@@ -1,0 +1,33 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/detail/detail"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "onReachBottomDistance":50
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "l-grid": "/miniprogram_npm/lin-ui/grid/index",
+    "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
+    "s-category-grid":"/components/category-grid/index",
+    "s-spu-scroll": "/components/spu-scroll/index",
+    "l-price": "/miniprogram_npm/lin-ui/price/index",
+    "s-hot-list":"/components/hot-list/index",
+    "l-water-flow":"/miniprogram_npm/lin-ui/water-flow/index",
+    "s-spu-preview": "/components/spu-preview/index",
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index",
+    "s-coupon": "components/coupon/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "calendar": "/components/calendar/index",
+    "l-tag": "/miniprogram_npm/lin-ui/tag/index",
+    "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
+    "s-realm": "/components/realm/index"
+  }
+}
