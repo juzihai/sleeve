@@ -5,7 +5,7 @@
     </view>
 <!--    sku-row-->
     <block wx:for="{{fences}}" wx:key="{{index}}">
-        <s-fence fence="{{item}}"></s-fence>
+        <s-fence x="{{index}}" bind:celltap="onCellTap" fence="{{item}}"></s-fence>
     </block>
 
     <view class="counter-container">
