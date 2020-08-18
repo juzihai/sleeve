@@ -22,10 +22,8 @@
     "l-water-flow":"/miniprogram_npm/lin-ui/water-flow/index",
     "s-spu-preview": "/components/spu-preview/index",
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
-    "s-coupon": "components/coupon/index",
     "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "l-button": "/miniprogram_npm/lin-ui/button/index",
-    "calendar": "/components/calendar/index",
     "l-tag": "/miniprogram_npm/lin-ui/tag/index",
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
     "s-realm": "/components/realm/index"

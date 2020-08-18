@@ -1,13 +1,4 @@
 <!--pages/home.wxml-->
-<!-- <calendar
-  calendarConfig="{{calendarConfig}}"
-  bind:onTapDay="onTapDay"
-  bind:afterTapDay="afterTapDay"
-  bind:onSwipe="onSwipe"
-  bind:whenChangeWeek="whenChangeWeek"
-  bind:whenChangeMonth="whenChangeMonth"
-  bind:afterCalendarRender="afterCalendarRender"
-></calendar> -->
 
 <l-loadmore show
             end-text="- 没有更多 -"

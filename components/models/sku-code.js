@@ -25,7 +25,7 @@ class SkuCode {
             this.totalSegments = this.totalSegments.concat(newSegments)
             console.log(newSegments)
         }
-        // 尽量少写显式的for循环
+       // 尽量少写显式的for循环
        // for for
        // 类、函数
 
