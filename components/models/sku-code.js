@@ -23,8 +23,8 @@ class SkuCode {
                 return  segs.join('#')
             })
             this.totalSegments = this.totalSegments.concat(newSegments)
-            console.log(newSegments)
         }
+        console.log(this.totalSegments)
        // 尽量少写显式的for循环
        // for for
        // 类、函数

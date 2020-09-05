@@ -35,6 +35,7 @@ Component({
         const judger = new Judger(fencesGroup)
         this.data.judger=judger
         this.bindInitData(fencesGroup)
+        console.log('我是fencesGroup',fencesGroup)
       }
   },
 
@@ -59,11 +60,10 @@ Component({
       // b.c=2
       // a.c 2
 
-      console.log(event.detail)
+      console.log('我是点击回调',event.detail)
       const judger =this.data.judger
-      // console.log(judger)
+      console.log("我是judger类".judger)
       judger.judge(cell,x,y)
-      // console.log(cell)
       this.setData({
         fences:judger.fenceGroup.fences
       })

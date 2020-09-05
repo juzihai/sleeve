@@ -11,24 +11,24 @@ class FenceGroup {
     }
 
 //知识点型 逻辑思维型
-    initFences1(){
-        // const a=[1,2,3]
-        const matrix=this._createMatrix(this.skuList)
-        console.log('我是矩阵对象',matrix)
-        const fences=[]
-        let currentJ=-1
-
-        matrix.each((element,i,j)=>{
-            console.log('我是矩阵',i,j,element)
-            if(currentJ!==j){
-                //开启一个新的列，需要创建一个新的fence
-                currentJ=j
-                //currentFence
-                fences[currentJ]= this._currentFence(element)
-            }
-            fences[currentJ].pushValueTitle(element.value)
-        })
-    }
+//     initFences1(){
+//         // const a=[1,2,3]
+//         const matrix=this._createMatrix(this.skuList)
+//         console.log('我是矩阵对象',matrix)
+//         const fences=[]
+//         let currentJ=-1
+//
+//         matrix.each((element,i,j)=>{
+//             console.log('我是矩阵',i,j,element)
+//             if(currentJ!==j){
+//                 //开启一个新的列，需要创建一个新的fence
+//                 currentJ=j
+//                 //currentFence
+//                 fences[currentJ]= new Fence(element)
+//             }
+//             fences[currentJ].pushValueTitle(element.value)
+//         })
+//     }
     //数学，，基本的思维（对编程的重要性）
     //矩阵尺寸
 
@@ -37,21 +37,16 @@ class FenceGroup {
         console.log('我是矩阵对象',matrix)
         const fences=[]
         const AT=matrix.transpose()
-        console.log(AT)
+        console.log('我是转置后的fences',AT)
         AT.forEach(r=>{
             const fence =new Fence(r)
             fence.init()
             fences.push(fence)
         })
         this.fences=fences
-        // console.log(fences)
+        console.log('我是fence处理后的fences',fences)
     }
-
-    _currentFence(element){
-        const fence=new Fence()
-        return fence
-    }
-
+    
     eachCell(cb){
         for (let i=0;i<this.fences.length;i++){
             for (let j=0;j<this.fences[i].cells.length;j++){
