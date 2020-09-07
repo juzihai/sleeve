@@ -1,5 +1,6 @@
 import {Matrix} from "./matrix";
 import {Fence} from "./fence";
+import {CellStatus} from "../../core/enum";
 
 class FenceGroup {
     spu
@@ -31,6 +32,25 @@ class FenceGroup {
 //     }
     //数学，，基本的思维（对编程的重要性）
     //矩阵尺寸
+
+    getDefaultSku(){
+        const defaultSkuId = this.spu.default_sku_id
+        if (!defaultSkuId){
+            return;
+        }
+        return this.skuList.find(s=>s.id === defaultSkuId)
+
+    }
+    setCellStatusById(cellId,status){
+        this.eachCell((cell)=>{
+            if (cell.id === cellId){
+                cell.status = status
+            }
+        })
+    }
+    setCellStatusByXY(x,y,status){
+        this.fences[x].cells[y].status =status
+    }
 
     initFences(){
         const matrix=this._createMatrix(this.skuList)

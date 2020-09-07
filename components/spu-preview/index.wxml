@@ -13,13 +13,12 @@
             <l-price
                     color="#157658"
                     value-size="28"
-                    unit-size="20"
                     autofix
                     value="{{p.mainPrice(data.price,data.discount_price).price}}"></l-price>
             <l-price
                     wx:if="{{p.slashedPrice(data.price,data.discount_price).display}}"
                     color="#999999"
-                    size="26"
+                    value-size="26"
                     l-class="discount-price"
                     deleted
                     value="{{p.slashedPrice(data.price,data.discount_price).price}}"></l-price>

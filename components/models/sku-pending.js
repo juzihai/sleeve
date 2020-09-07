@@ -1,8 +1,15 @@
+import {Cell} from "./cell";
 
 class SkuPending {
     pending = []
     size
     constructor() {
+    }
+    init(sku){
+        sku.specs.forEach((s,i)=>{
+            const cell = new Cell(s)
+            this.insertCell(cell,i)
+        })
     }
 
     insertCell(cell,x){

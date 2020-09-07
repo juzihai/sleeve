@@ -6,13 +6,32 @@ class Judger {
     fenceGroup
     pathDict =[]
     skuPending
+
+    //沟通类
+    //本职类
+
     constructor(fenceGroup) {
         this.fenceGroup=fenceGroup
-        this._initSkuPending()
         this._initPathDict()
+        this._initSkuPending()
+
     }
     _initSkuPending(){
         this.skuPending = new SkuPending()
+        const defaultSku = this.fenceGroup.getDefaultSku()
+        if (!defaultSku){
+            return
+        }
+        this.skuPending.init(defaultSku)
+        this._initSelectedCell()
+        this.judge(null,null,null,true)
+
+
+    }
+    _initSelectedCell() {
+        this.skuPending.pending.forEach(cell=>{
+            this.fenceGroup.setCellStatusById(cell.id,CellStatus.SELECTED)
+        })
     }
     _initPathDict(){
         this.fenceGroup.spu.sku_list.forEach(s=>{
@@ -23,9 +42,12 @@ class Judger {
 
     }
 
-    judge(cell,x,y){
+    judge(cell,x,y,isInit = false){
         console.log("我是judger类judge",cell,x,y)
-        this._changeCurrentCellStatus(cell,x,y)
+        if (!isInit){
+            this._changeCurrentCellStatus(cell,x,y)
+        }
+
         this.fenceGroup.eachCell((cell,x,y)=>{
             // this._changeOtherCellStatus(cell,x,y)
             const path = this._findPotentialPath(cell,x,y)
@@ -35,9 +57,11 @@ class Judger {
             }
             const isIn=this._isInDict(path)
             if (isIn){
-                this.fenceGroup.fences[x].cells[y].status =CellStatus.WAITING
+                // this.fenceGroup.fences[x].cells[y].status =CellStatus.WAITING
+                this.fenceGroup.setCellStatusByXY(x,y,CellStatus.WAITING)
             }else {
-                this.fenceGroup.fences[x].cells[y].status =CellStatus.FORBIDDEN
+                // this.fenceGroup.fences[x].cells[y].status =CellStatus.FORBIDDEN
+                this.fenceGroup.setCellStatusByXY(x,y,CellStatus.FORBIDDEN)
             }
         })
     }
@@ -84,12 +108,14 @@ class Judger {
     _changeCurrentCellStatus(cell,x,y){
         if(cell.status === CellStatus.WAITING){
             // cell.status = CellStatus.SELECTED
-            this.fenceGroup.fences[x].cells[y].status =CellStatus.SELECTED
+            // this.fenceGroup.fences[x].cells[y].status =CellStatus.SELECTED
+            this.fenceGroup.setCellStatusByXY(x,y,CellStatus.SELECTED)
             this.skuPending.insertCell(cell,x)
         }
         if(cell.status === CellStatus.SELECTED){
             // cell.status = CellStatus.WAITING
-            this.fenceGroup.fences[x].cells[y].status =CellStatus.WAITING
+            // this.fenceGroup.fences[x].cells[y].status =CellStatus.WAITING
+            this.fenceGroup.setCellStatusByXY(x,y,CellStatus.WAITING)
             this.skuPending.removeCell(x)
         }
     }
