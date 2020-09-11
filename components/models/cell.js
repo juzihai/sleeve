@@ -11,6 +11,9 @@ class Cell {
         this.id=spec.value_id
         this.spec = spec
     }
+    getCellCode(spec){
+        return spec.key_id +"-" + spec.value_id
+    }
 
 }
 

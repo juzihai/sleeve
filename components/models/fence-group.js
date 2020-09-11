@@ -38,7 +38,7 @@ class FenceGroup {
         if (!defaultSkuId){
             return;
         }
-        return this.skuList.find(s=>s.id === defaultSkuId)
+        return this.skuList.find(s => s.id === defaultSkuId)
 
     }
     setCellStatusById(cellId,status){

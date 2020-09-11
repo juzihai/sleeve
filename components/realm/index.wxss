@@ -35,3 +35,14 @@
     height: 2rpx;
     background-color: #E9E9E9;
 }
+.stock {
+    margin-left:30rpx;
+    font-size: 20rpx;
+    color: #999;
+}
+ 
+.stock-pinch{
+    margin-left:30rpx;
+    font-size: 20rpx;
+    color: #D20109;
+}

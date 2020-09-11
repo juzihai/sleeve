@@ -16,8 +16,12 @@ class Judger {
         this._initSkuPending()
 
     }
+    isSkuIntact() {
+        return this.skuPending.isIntact()
+    }
     _initSkuPending(){
-        this.skuPending = new SkuPending()
+        const specsLength = this.fenceGroup.fences.length
+        this.skuPending = new SkuPending(specsLength)
         const defaultSku = this.fenceGroup.getDefaultSku()
         if (!defaultSku){
             return
@@ -72,7 +76,7 @@ class Judger {
     // _changeOtherCellStatus(cell,x,y){
     //     this._findPotentialPath(cell,x,y)
     // }
-    _findPotentialPath(cell,x,y){
+     _findPotentialPath(cell,x,y){
 
         const joiner = new Joiner('#')
         for (let i=0;i<this.fenceGroup.fences.length;i++){
