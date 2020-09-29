@@ -14,11 +14,28 @@ class SkuPending {
             this.insertCell(cell,i)
         })
     }
-    getSkuCode(){
-        const joiner = new Joiner()
-        this.pending.forEach(cell=>{
-            
+    getCurrentSpecValues(){
+        const values=this.pending.map(cell=>{
+            return cell ? cell.spec.value : null
         })
+        return values
+    }
+    getMissingSpecKeysIndex(){
+        const keysIndex = []
+        for (let i = 0; i < this.size; i++) {
+            if (!this.pending[i]){
+                keysIndex.push(i)
+            }
+        }
+        return keysIndex
+    }
+    getSkuCode(){
+        const joiner = new Joiner('#')
+        this.pending.forEach(cell=>{
+            const cellCode = cell.getCellCode()
+            joiner.join(cellCode)
+        })
+        return joiner.getStr()
     }
     isIntact(){ 
         // if(this.size !== this.pending.length){

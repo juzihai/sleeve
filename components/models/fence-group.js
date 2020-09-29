@@ -41,6 +41,12 @@ class FenceGroup {
         return this.skuList.find(s => s.id === defaultSkuId)
 
     }
+    getSku(skuCode){
+        const fullSkuCode = this.spu.id +'$' + skuCode
+        const sku =this.spu.sku_list.find(s=> s.code === fullSkuCode)
+        return sku ? sku : null
+    }
+
     setCellStatusById(cellId,status){
         this.eachCell((cell)=>{
             if (cell.id === cellId){
@@ -61,10 +67,19 @@ class FenceGroup {
         AT.forEach(r=>{
             const fence =new Fence(r)
             fence.init()
+            if(this._hasSketchFence() && this._isSketchFence(fence.id)){
+                fence.setFenceSketch(this.skuList)
+            }
             fences.push(fence)
         })
         this.fences=fences
         console.log('我是fence处理后的fences',fences)
+    }
+    _hasSketchFence(){
+        return this.spu.sketch_spec_id ? true:false
+    }
+    _isSketchFence(fenceId){
+        return this.spu.sketch_spec_id === fenceId ? true:false
     }
     
     eachCell(cb){

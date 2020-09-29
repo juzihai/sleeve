@@ -8,6 +8,8 @@ import {
 import {
   Spu
 } from "../../models/spu";
+import { Cell } from "../models/cell";
+import {Cart} from "../../models/cart";
 
 Component({
   /**
@@ -15,6 +17,7 @@ Component({
    */
   properties: {
     spu: Object,
+    orderWay: String
   },
 
   /**
@@ -23,6 +26,7 @@ Component({
   data: {
     judger: Object,
     previewImage: String,
+    currentSkuCount:Cart.SKU_MIN_COUNT
 
   },
   lifetimes: {
@@ -45,6 +49,7 @@ Component({
       } else {
         this.processHasSpec(spu)
       }
+      this.triggerSpecEvent()
     }
   },
 
@@ -58,6 +63,7 @@ Component({
         // skuIntact
       })
       this.bindSkuData(spu.sku_list[0])
+      this.setStockStatus(spu.sku_list[0].stock,this.data.currentSkuCount)
     },
     processHasSpec(spu) {
       const fencesGroup = new FenceGroup(spu)
@@ -70,13 +76,28 @@ Component({
       console.log('我是defaultSku', defaultSku)
       if (defaultSku) {
         this.bindSkuData(defaultSku)
+        this.setStockStatus(defaultSku.stock,this.data.currentSkuCount)
       } else {
         this.bindSpuData()
       }
       this.bindTipData()
       this.bindFenceGroupData(fencesGroup)
     },
-
+    triggerSpecEvent(){
+      const noSpec = Spu.isNoSpec(this.properties.spu)
+      if (noSpec) {
+          this.triggerEvent('specchange', {
+              noSpec
+          })
+      } else {
+          this.triggerEvent('specchange', {
+              noSpec: Spu.isNoSpec(this.properties.spu),
+              skuIntact: this.data.judger.isSkuIntact(),
+              currentValues: this.data.judger.getCurrentValues(),
+              missingKeys: this.data.judger.getMissingKeys()
+          })
+      }
+    },
     bindSpuData() {
       const spu = this.properties.spu
       this.setData({
@@ -97,7 +118,9 @@ Component({
     },
     bindTipData(){
       this.setData({
-        skuIntact: this.data.judger.isSkuIntact()
+        skuIntact: this.data.judger.isSkuIntact(),
+        currentValues:this.data.judger.getCurrentValues(),
+        missingKeys:this.data.judger.getMissingKeys()
       })
     },
     bindFenceGroupData(fenceGroup) {
@@ -105,13 +128,30 @@ Component({
         fences: fenceGroup.fences,
       })
     },
-
+    setStockStatus(stock,currentCount){
+      this.setData({
+        outStock:this.isOutOfStock(stock,currentCount)
+      })
+    },
+    isOutOfStock(stock,currentCount){
+      return stock < currentCount
+    },
+    onSelectCount(event){
+      const currentCount=event.detail.count
+      this.data.currentSkuCount=currentCount
+      if (this.data.judger.isSkuIntact()){
+        const sku = this.data.judger.getDeterminateSku()
+        this.setStockStatus(sku.stock,currentCount)
+      }
+    },
     onCellTap(event) {
       const {
-        cell,
         x,
         y
       } = event.detail
+      const data=event.detail.cell
+      const cell=new Cell(data.spec)
+      cell.status=data.status
       //Object
       //fences
       //引用类型
@@ -125,10 +165,13 @@ Component({
       judger.judge(cell, x, y)
       const skuIntact=this.data.judger.isSkuIntact()
       if(skuIntact){
-        const code = judger._findPotentialPath(cell,x,y)
-        this.bindSkuData()
+        const currentSku = judger.getDeterminateSku()
+        this.bindSkuData(currentSku)
+        this.setStockStatus(currentSku.stock,this.data.currentSkuCount)
       }
+      this.bindTipData()
       this.bindFenceGroupData(judger.fenceGroup)
+      this.triggerSpecEvent()
     }
 
   }

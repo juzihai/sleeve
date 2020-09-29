@@ -1,6 +1,5 @@
 import {Http} from "./http";
 
-
 class Paging {
     //不关心细节
     //嗨，我需要下一页的数据了，你能给我吗
